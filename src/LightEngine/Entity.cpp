@@ -158,7 +158,7 @@ void Entity::Update()
 		float x2 = x1 + mDirection.x * mTarget.distance;
 		float y2 = y1 + mDirection.y * mTarget.distance;
 
-		Debug::DrawLine(x1, y1, x2, y2, sf::Color::Cyan);
+		Debug::DrawLine(x1, y1, x2, y2, sf::Color::White);
 
 		Debug::DrawCircle(mTarget.position.x, mTarget.position.y, 5.f, sf::Color::Magenta);
 
