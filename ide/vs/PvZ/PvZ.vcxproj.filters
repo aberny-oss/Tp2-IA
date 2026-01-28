@@ -1,22 +1,36 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
-    <ItemGroup>
-        <Filter Include="header">
-            <UniqueIdentifier>{489D9672-0347-4C42-AED9-33013D30BC88}</UniqueIdentifier>
-            <Extensions>h;hpp</Extensions>
-        </Filter>
-        <Filter Include="resource">
-            <UniqueIdentifier>{DDC7D2DA-07EB-44D3-82C6-E0ECFEBA2B7A}</UniqueIdentifier>
-            <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
-        </Filter>
-        <Filter Include="source">
-            <UniqueIdentifier>{8B4B3FF8-0406-403B-9098-217FE5866118}</UniqueIdentifier>
-            <Extensions>cpp;c</Extensions>
-        </Filter>
-    </ItemGroup>
-    <ItemGroup>
-        <ClCompile Include="..\..\..\src\PvZ\main.cpp">
-            <Filter>source</Filter>
-        </ClCompile>
-    </ItemGroup>
+  <ItemGroup>
+    <Filter Include="header">
+      <UniqueIdentifier>{489D9672-0347-4C42-AED9-33013D30BC88}</UniqueIdentifier>
+      <Extensions>h;hpp</Extensions>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{DDC7D2DA-07EB-44D3-82C6-E0ECFEBA2B7A}</UniqueIdentifier>
+      <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{8B4B3FF8-0406-403B-9098-217FE5866118}</UniqueIdentifier>
+      <Extensions>cpp;c</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\src\PvZ\main.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PvZ\DummyEntity.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\src\PvZ\SampleScene.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\src\PvZ\DummyEntity.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\src\PvZ\SampleScene.h">
+      <Filter>header</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
