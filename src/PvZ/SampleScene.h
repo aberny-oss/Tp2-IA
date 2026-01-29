@@ -9,14 +9,19 @@ class Projectile;
 
 class SampleScene : public Scene
 {
-	DummyEntity* pEntity1;
-	DummyEntity* pEntity2;
-	DummyEntity* pEntity3;
+	Plant* pPlant1;
+	Plant* pPlant2;
+	Plant* pPlant3;
 
-	DummyEntity* pEntitySelected;
+	Zombie* pZombie;
+
+	Projectile* pProjectile;
+
+	Plant* pPlantSelected;
+
 
 private:
-	void TrySetSelectedEntity(DummyEntity* pEntity, int x, int y);
+	void TrySetSelectedPlant(Plant* pEntity, int x, int y);
 
 public:
 	void OnInitialize() override;

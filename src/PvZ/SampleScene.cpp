@@ -1,24 +1,27 @@
 #include "SampleScene.h"
 
 #include "DummyEntity.h"
+#include "Plant.h"
+#include "Zombie.h"
+#include "Projectile.h"
 
 #include "Debug.h"
 
 void SampleScene::OnInitialize()
 {
-	/*pEntity1 = CreateEntity<DummyEntity>(100, sf::Color::Red);
-	pEntity1->SetPosition(100, 100);
-	pEntity1->SetRigidBody(true);
+	pPlant1 = CreateEntity<Plant>(50, sf::Color::Green);
+	pPlant1->SetPosition(100, Scene::GetWindowHeight() / 6);
+	pPlant1->SetRigidBody(true);
 
-	pEntity2 = CreateEntity<DummyEntity>(50, sf::Color::Green);
-	pEntity2->SetPosition(500, 500);
-	pEntity2->SetRigidBody(true);
+	pPlant2 = CreateEntity<Plant>(50, sf::Color::Green);
+	pPlant2->SetPosition(100, Scene::GetWindowHeight() /2);
+	pPlant2->SetRigidBody(true);
 
-	pEntity3 = CreateEntity<DummyEntity>(25, sf::Color::Blue);
-	pEntity3->SetPosition(250, 250);
-	pEntity3->SetRigidBody(true);*/
+	pPlant3 = CreateEntity<Plant>(50, sf::Color::Green);
+	pPlant3->SetPosition(100, Scene::GetWindowHeight() / 1.20f);
+	pPlant3->SetRigidBody(true);
 
-	pEntitySelected = nullptr;
+	pPlantSelected = nullptr;
 }
 
 void SampleScene::OnEvent(const sf::Event& event)
@@ -28,9 +31,10 @@ void SampleScene::OnEvent(const sf::Event& event)
 
 	if (event.mouseButton.button == sf::Mouse::Button::Right)
 	{
-		pEntity1 = CreateEntity<DummyEntity>(100, sf::Color::Red);
-		pEntity1->SetPosition(100, 100);
-		pEntity1->SetRigidBody(true);
+		
+		pZombie = CreateEntity<Zombie>(80, sf::Color::Red);
+		pZombie->SetPosition(event.mouseButton.x, event.mouseButton.y);
+		pZombie->SetRigidBody(true);
 		/*TrySetSelectedEntity(pEntity1, event.mouseButton.x, event.mouseButton.y);
 		TrySetSelectedEntity(pEntity2, event.mouseButton.x, event.mouseButton.y);
 		TrySetSelectedEntity(pEntity3, event.mouseButton.x, event.mouseButton.y);*/
@@ -38,26 +42,45 @@ void SampleScene::OnEvent(const sf::Event& event)
 
 	if (event.mouseButton.button == sf::Mouse::Button::Left)
 	{
-		if (pEntitySelected != nullptr)
+		if (pPlantSelected != nullptr)
 		{
-			pEntitySelected->GoToPosition(event.mouseButton.x, event.mouseButton.y, 100.f);
+			/*pEntitySelected->GoToPosition(event.mouseButton.x, event.mouseButton.y, 100.f);*/
+			TrySetSelectedPlant(pPlant1, event.mouseButton.x, event.mouseButton.y);
+			TrySetSelectedPlant(pPlant2, event.mouseButton.x, event.mouseButton.y);
+			TrySetSelectedPlant(pPlant3, event.mouseButton.x, event.mouseButton.y);
+			pPlantSelected->Shoot();
+			pProjectile = CreateEntity<Projectile>(25, sf::Color::Blue);
+			pProjectile->SetPosition(pPlantSelected->GetPosition().x, pPlantSelected->GetPosition().x);
+			pProjectile->SetRigidBody(false);
+
+
 		}
 	}
 }
 
-void SampleScene::TrySetSelectedEntity(DummyEntity* pEntity, int x, int y)
+void SampleScene::TrySetSelectedPlant(Plant* pEntity, int x, int y)
 {
 	if (pEntity->IsInside(x, y) == false)
+	{
 		return;
+	}
 
-	pEntitySelected = pEntity;
+	pPlantSelected = pEntity;
 }
 
 void SampleScene::OnUpdate()
 {
-	if (pEntitySelected != nullptr)
+	/*if (pPlantSelected != nullptr)
 	{
-		sf::Vector2f position = pEntitySelected->GetPosition();
+		sf::Vector2f position = pPlantSelected->GetPosition();
 		Debug::DrawCircle(position.x, position.y, 10, sf::Color::Blue);
+	}*/
+	for (Projectile& pjt : G)
+	{
+		pjt.GoToDirection(1, 0);
+	}
+	for (Zombie& zmb : Entity::Get)
+	{
+		zmb.GoToDirection(-1, 0);
 	}
 }
