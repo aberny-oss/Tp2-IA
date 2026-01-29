@@ -24,12 +24,30 @@
     <ClCompile Include="..\..\..\src\PvZ\SampleScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Plant.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Zombie.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Projectile.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\src\PvZ\DummyEntity.h">
       <Filter>header</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\src\PvZ\SampleScene.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Plant.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Zombie.h">
+      <Filter>header</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Projectile.h">
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>

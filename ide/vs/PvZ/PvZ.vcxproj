@@ -94,11 +94,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Plant.cpp" />
+    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Projectile.cpp" />
+    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Zombie.cpp" />
     <ClCompile Include="..\..\..\src\PvZ\DummyEntity.cpp" />
     <ClCompile Include="..\..\..\src\PvZ\main.cpp" />
     <ClCompile Include="..\..\..\src\PvZ\SampleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Plant.h" />
+    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Projectile.h" />
+    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Zombie.h" />
     <ClInclude Include="..\..\..\src\PvZ\DummyEntity.h" />
     <ClInclude Include="..\..\..\src\PvZ\SampleScene.h" />
   </ItemGroup>
