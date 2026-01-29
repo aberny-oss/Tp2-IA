@@ -24,13 +24,13 @@
     <ClCompile Include="..\..\..\src\PvZ\SampleScene.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Plant.cpp">
+    <ClCompile Include="..\..\..\src\PvZ\Plant.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Zombie.cpp">
+    <ClCompile Include="..\..\..\src\PvZ\Zombie.cpp">
       <Filter>source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Projectile.cpp">
+    <ClCompile Include="..\..\..\src\PvZ\Projectile.cpp">
       <Filter>source</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,13 +41,13 @@
     <ClInclude Include="..\..\..\src\PvZ\SampleScene.h">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Plant.h">
+    <ClInclude Include="..\..\..\src\PvZ\Plant.h">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Zombie.h">
+    <ClInclude Include="..\..\..\src\PvZ\Zombie.h">
       <Filter>header</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Projectile.h">
+    <ClInclude Include="..\..\..\src\PvZ\Projectile.h">
       <Filter>header</Filter>
     </ClInclude>
   </ItemGroup>

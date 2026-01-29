@@ -1,5 +1,7 @@
 #pragma once
-class Zombie
+#include "Entity.h"
+
+class Zombie : public Entity
 {
 
 };

@@ -6,7 +6,7 @@
 
 void SampleScene::OnInitialize()
 {
-	pEntity1 = CreateEntity<DummyEntity>(100, sf::Color::Red);
+	/*pEntity1 = CreateEntity<DummyEntity>(100, sf::Color::Red);
 	pEntity1->SetPosition(100, 100);
 	pEntity1->SetRigidBody(true);
 
@@ -16,7 +16,7 @@ void SampleScene::OnInitialize()
 
 	pEntity3 = CreateEntity<DummyEntity>(25, sf::Color::Blue);
 	pEntity3->SetPosition(250, 250);
-	pEntity3->SetRigidBody(true);
+	pEntity3->SetRigidBody(true);*/
 
 	pEntitySelected = nullptr;
 }
@@ -28,9 +28,12 @@ void SampleScene::OnEvent(const sf::Event& event)
 
 	if (event.mouseButton.button == sf::Mouse::Button::Right)
 	{
-		TrySetSelectedEntity(pEntity1, event.mouseButton.x, event.mouseButton.y);
+		pEntity1 = CreateEntity<DummyEntity>(100, sf::Color::Red);
+		pEntity1->SetPosition(100, 100);
+		pEntity1->SetRigidBody(true);
+		/*TrySetSelectedEntity(pEntity1, event.mouseButton.x, event.mouseButton.y);
 		TrySetSelectedEntity(pEntity2, event.mouseButton.x, event.mouseButton.y);
-		TrySetSelectedEntity(pEntity3, event.mouseButton.x, event.mouseButton.y);
+		TrySetSelectedEntity(pEntity3, event.mouseButton.x, event.mouseButton.y);*/
 	}
 
 	if (event.mouseButton.button == sf::Mouse::Button::Left)

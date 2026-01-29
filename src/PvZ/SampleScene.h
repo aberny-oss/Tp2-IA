@@ -3,6 +3,9 @@
 #include "Scene.h"
 
 class DummyEntity;
+class Plant;
+class Zombie;
+class Projectile;
 
 class SampleScene : public Scene
 {

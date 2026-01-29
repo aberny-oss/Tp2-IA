@@ -94,19 +94,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Plant.cpp" />
-    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Projectile.cpp" />
-    <ClCompile Include="..\..\..\..\LightEngine\src\PvZ\Zombie.cpp" />
     <ClCompile Include="..\..\..\src\PvZ\DummyEntity.cpp" />
     <ClCompile Include="..\..\..\src\PvZ\main.cpp" />
+    <ClCompile Include="..\..\..\src\PvZ\Plant.cpp" />
+    <ClCompile Include="..\..\..\src\PvZ\Projectile.cpp" />
     <ClCompile Include="..\..\..\src\PvZ\SampleScene.cpp" />
+    <ClCompile Include="..\..\..\src\PvZ\Zombie.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Plant.h" />
-    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Projectile.h" />
-    <ClInclude Include="..\..\..\..\LightEngine\src\PvZ\Zombie.h" />
     <ClInclude Include="..\..\..\src\PvZ\DummyEntity.h" />
+    <ClInclude Include="..\..\..\src\PvZ\Plant.h" />
+    <ClInclude Include="..\..\..\src\PvZ\Projectile.h" />
     <ClInclude Include="..\..\..\src\PvZ\SampleScene.h" />
+    <ClInclude Include="..\..\..\src\PvZ\Zombie.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

@@ -1,5 +1,7 @@
 #pragma once
-class Projectile
+#include "Entity.h"
+
+class Projectile : public Entity
 {
 
 };
