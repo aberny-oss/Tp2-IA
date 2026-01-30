@@ -1,22 +1,18 @@
 #include "Plant.h"
-#include <iostream>
+
+#include "PvZScene.h"
+#include "Projectile.h"
 
 void Plant::Shoot()
 {
-	if (m_Ammo <= 0)
-	{
-		return;
-	}
-	m_Ammo -= 1;
-	std::cout << "Plante tire ! " << std::endl;
+	float projectileRadius = GetRadius() * 0.1f;
+	sf::Vector2f projectilePos = GetPosition();
+
+	Projectile* p = CreateEntity<Projectile>(projectileRadius, sf::Color::Cyan);
+	p->SetPosition(projectilePos.x, projectilePos.y);
 }
 
-void Plant::Realoading()
+void Plant::OnInitialize()
 {
-	if (m_Ammo == m_MaxAmmo)
-	{
-		return;
-	}
-	m_Ammo = m_MaxAmmo;
-	std::cout << "Plante Recharge ! " << std::endl;
+	SetTag((int)PvZScene::Tag::Plant);
 }
