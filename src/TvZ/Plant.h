@@ -16,6 +16,10 @@ class Plant : public Entity
 	int m_bullet;
 	int m_capacity;
 
+	float m_PStimer;
+	bool m_powerShoot;
+	bool m_ZoneDZombie;
+
 	
 public:
 	void Shoot();

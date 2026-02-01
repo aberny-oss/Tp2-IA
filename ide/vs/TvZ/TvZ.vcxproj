@@ -13,7 +13,7 @@
     <PropertyGroup Label="Globals">
         <VCProjectVersion>17.0</VCProjectVersion>
         <Keyword>Win32Proj</Keyword>
-        <ProjectGuid>{AF80CCD2-F674-42FE-8A47-E1D1D9C53703}</ProjectGuid>
+        <ProjectGuid>{1F657315-8951-4086-9368-5829204F7FB6}</ProjectGuid>
         <RootNamespace>TvZ</RootNamespace>
         <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     </PropertyGroup>
@@ -94,21 +94,30 @@
         </Link>
     </ItemDefinitionGroup>
     <ItemGroup>
+        <ClCompile Include="..\..\..\src\TvZ\Condition.cpp"/>
         <ClCompile Include="..\..\..\src\TvZ\main.cpp"/>
         <ClCompile Include="..\..\..\src\TvZ\Plant.cpp"/>
+        <ClCompile Include="..\..\..\src\TvZ\PlantCondition.cpp"/>
         <ClCompile Include="..\..\..\src\TvZ\Projectile.cpp"/>
         <ClCompile Include="..\..\..\src\TvZ\PvZScene.cpp"/>
         <ClCompile Include="..\..\..\src\TvZ\StateBase.cpp"/>
         <ClCompile Include="..\..\..\src\TvZ\StateMachine.cpp"/>
+        <ClCompile Include="..\..\..\src\TvZ\Transition.cpp"/>
         <ClCompile Include="..\..\..\src\TvZ\Zombie.cpp"/>
+        <ClCompile Include="..\..\..\src\TvZ\ZombieCondition.cpp"/>
     </ItemGroup>
     <ItemGroup>
+        <ClInclude Include="..\..\..\src\TvZ\Condition.h"/>
         <ClInclude Include="..\..\..\src\TvZ\Plant.h"/>
+        <ClInclude Include="..\..\..\src\TvZ\PlantCondition.h"/>
         <ClInclude Include="..\..\..\src\TvZ\Projectile.h"/>
+        <ClInclude Include="..\..\..\src\TvZ\ProjectileCondition.h"/>
         <ClInclude Include="..\..\..\src\TvZ\PvZScene.h"/>
         <ClInclude Include="..\..\..\src\TvZ\StateBase.h"/>
         <ClInclude Include="..\..\..\src\TvZ\StateMachine.h"/>
+        <ClInclude Include="..\..\..\src\TvZ\Transition.h"/>
         <ClInclude Include="..\..\..\src\TvZ\Zombie.h"/>
+        <ClInclude Include="..\..\..\src\TvZ\ZombieCondition.h"/>
     </ItemGroup>
     <ItemGroup/>
     <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>

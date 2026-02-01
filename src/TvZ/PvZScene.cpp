@@ -12,6 +12,18 @@ bool PvZScene::IsZombieOnLane(int indexLane)
 	return m_zombies[indexLane].size() > 0;
 }
 
+bool PvZScene::GetPosZombieOnLane(int indexlane, int x)
+{
+	for (Zombie* zombie : m_zombies[indexlane])
+	{
+		if (zombie->GetPosition().x <= x)  
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 void PvZScene::OnInitialize()
 {
 	float width = GetWindowWidth();

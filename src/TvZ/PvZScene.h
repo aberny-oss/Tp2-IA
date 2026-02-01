@@ -29,6 +29,7 @@ private:
 public:
 
 	bool IsZombieOnLane(int indexLane);
+	bool GetPosZombieOnLane(int indexlane, int x);
 	int GetLaneIndex(int y) const;
 	void RemoveZombie(Zombie* zombie);
 

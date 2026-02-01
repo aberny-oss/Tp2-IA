@@ -2,6 +2,7 @@
 #include "Debug.h"
 #include "PvZScene.h"
 #include "Projectile.h"
+#include "Zombie.h"
 
 #include <string>
 
@@ -9,6 +10,19 @@ void Plant::Shoot()
 {
 	if (m_bullet <= 0)
 		return;
+	if (m_powerShoot == true)
+	{
+		
+		float projectileRadius = GetRadius() * 0.3f;
+		sf::Vector2f projectilePos = GetPosition();
+
+		Projectile* p = CreateEntity<Projectile>(projectileRadius, sf::Color::Magenta);
+		p->SetPosition(projectilePos.x, projectilePos.y);
+
+		--m_bullet;
+		m_powerShoot = false;
+		return;
+	}
 
 	float projectileRadius = GetRadius() * 0.1f;
 	sf::Vector2f projectilePos = GetPosition();
@@ -27,6 +41,9 @@ void Plant::Reload()
 void Plant::OnInitialize()
 {
 	m_bullet = m_capacity = 6;
+	m_PStimer = 3.f;
+	m_powerShoot = false;
+	m_ZoneDZombie = false;
 
 	SetTag((int)PvZScene::Tag::Plant);
 
@@ -44,6 +61,10 @@ void Plant::OnUpdate()
 	Debug::DrawText(pos.x, pos.y, text, 0.5f, 0.5f, sf::Color::Blue);
 	Debug::DrawText(pos.x, pos.y - 50, StateToStr(), 0.5f, 0.5f, sf::Color::Blue);
 
+	if (m_powerShoot == false)
+	{
+		m_PStimer -= GetDeltaTime();
+	}
 	m_stateMachine.Update(this, GetDeltaTime());
 }
 
@@ -81,9 +102,15 @@ void IdlePLantState::Update(Plant* type, float dt)
 	int laneIndex = scene->GetLaneIndex(type->GetPosition().y);
 
 	bool isZombieOnLane = scene->IsZombieOnLane(laneIndex);
+	type->m_ZoneDZombie = scene->GetPosZombieOnLane(laneIndex, 666);
 
 	if (isZombieOnLane) 
 	{
+		if (type->m_PStimer <= 0 && type->m_ZoneDZombie == true)
+		{
+			type->m_powerShoot = true;
+			type->m_PStimer = 3.f;
+		}
 		type->m_stateMachine.TryTransitionTo(type, (int)Plant::State::Shooting);
 		return;
 	}
