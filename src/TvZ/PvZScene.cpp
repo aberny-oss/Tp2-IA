@@ -7,6 +7,11 @@
 
 #include <iostream>
 
+bool PvZScene::IsZombieOnLane(int indexLane)
+{
+	return m_zombies[indexLane].size() > 0;
+}
+
 void PvZScene::OnInitialize()
 {
 	float width = GetWindowWidth();
@@ -39,7 +44,7 @@ void PvZScene::OnEvent(const sf::Event& event)
 
 	if (event.mouseButton.button == sf::Mouse::Button::Right)
 	{
-		SpawnZombie(laneIndex);
+		SpawnZombie(event.mouseButton.x, laneIndex);
 	}
 
 	if (event.mouseButton.button == sf::Mouse::Button::Left)
@@ -72,18 +77,34 @@ int PvZScene::GetLaneIndex(int y) const
 	return -1;
 }
 
-Zombie* PvZScene::SpawnZombie(int laneIndex)
+void PvZScene::RemoveZombie(Zombie* zombie)
+{
+	int laneIndex = GetLaneIndex(zombie->GetPosition().y);
+
+	for (int i = 0; i < m_zombies[laneIndex].size(); i++)
+	{
+		if (m_zombies[laneIndex][i] == zombie)
+		{
+			m_zombies[laneIndex].erase(m_zombies[laneIndex].begin() + i);
+			break;
+		}
+	}
+}
+
+Zombie* PvZScene::SpawnZombie(int x, int laneIndex)
 {
 	float width = GetWindowWidth();
 
 	float zombieSize = m_laneHeight * 0.5f;
 	float zombieRadius = zombieSize / 2;
 
-	float zombieStartX = width - (width * 0.01f);
 	float zombieStartY = m_laneHeight / 2;
 
 	Zombie* z = CreateEntity<Zombie>(zombieRadius, sf::Color::Red);
-	z->SetPosition(zombieStartX, m_laneHeight * laneIndex + zombieStartY, 1.f, 0.5f);
+	z->SetPosition(x, m_laneHeight * laneIndex + zombieStartY, 1.f, 0.5f );
+
+	m_zombies[laneIndex].push_back(z);
 
 	return z;
 }
+

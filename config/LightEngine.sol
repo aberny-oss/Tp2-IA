@@ -4,7 +4,7 @@
     "projects": [
         "LightEngine.prj",
         "Sample.prj",
-        "PvZ.prj"
+        "TvZ.prj"
     ],
     "solution_name": "LightEngine",
     "version": "16",

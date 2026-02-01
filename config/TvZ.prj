@@ -1,8 +1,8 @@
 {
-    "name": "PvZ",
-    "folder": "PvZ\\",
+    "name": "TvZ",
+    "folder": "TvZ\\",
     "vc_project_version": "17.0",
-    "root_namespace": "PvZ",
+    "root_namespace": "TvZ",
     "windows_target_platform_version": "10.0",
     "use_vcpkg": "false",
     "use_vcpkg_manifest": "false",
@@ -29,7 +29,6 @@
             "use_debug_libraries": "true",
             "vcpkg_configuration": "Debug",
             "warning_level": "Level3"
-
         },
         {
             "additional_dependencies": "%(AdditionalDependencies)",

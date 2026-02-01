@@ -13,8 +13,8 @@
     <PropertyGroup Label="Globals">
         <VCProjectVersion>17.0</VCProjectVersion>
         <Keyword>Win32Proj</Keyword>
-        <ProjectGuid>{E21EBEF2-828D-4847-AB80-DBE0B5A1B3C1}</ProjectGuid>
-        <RootNamespace>PvZ</RootNamespace>
+        <ProjectGuid>{AF80CCD2-F674-42FE-8A47-E1D1D9C53703}</ProjectGuid>
+        <RootNamespace>TvZ</RootNamespace>
         <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     </PropertyGroup>
     <PropertyGroup Label="Vcpkg">
@@ -94,17 +94,21 @@
         </Link>
     </ItemDefinitionGroup>
     <ItemGroup>
-        <ClCompile Include="..\..\..\src\PvZ\main.cpp"/>
-        <ClCompile Include="..\..\..\src\PvZ\Plant.cpp"/>
-        <ClCompile Include="..\..\..\src\PvZ\Projectile.cpp"/>
-        <ClCompile Include="..\..\..\src\PvZ\PvZScene.cpp"/>
-        <ClCompile Include="..\..\..\src\PvZ\Zombie.cpp"/>
+        <ClCompile Include="..\..\..\src\TvZ\main.cpp"/>
+        <ClCompile Include="..\..\..\src\TvZ\Plant.cpp"/>
+        <ClCompile Include="..\..\..\src\TvZ\Projectile.cpp"/>
+        <ClCompile Include="..\..\..\src\TvZ\PvZScene.cpp"/>
+        <ClCompile Include="..\..\..\src\TvZ\StateBase.cpp"/>
+        <ClCompile Include="..\..\..\src\TvZ\StateMachine.cpp"/>
+        <ClCompile Include="..\..\..\src\TvZ\Zombie.cpp"/>
     </ItemGroup>
     <ItemGroup>
-        <ClInclude Include="..\..\..\src\PvZ\Plant.h"/>
-        <ClInclude Include="..\..\..\src\PvZ\Projectile.h"/>
-        <ClInclude Include="..\..\..\src\PvZ\PvZScene.h"/>
-        <ClInclude Include="..\..\..\src\PvZ\Zombie.h"/>
+        <ClInclude Include="..\..\..\src\TvZ\Plant.h"/>
+        <ClInclude Include="..\..\..\src\TvZ\Projectile.h"/>
+        <ClInclude Include="..\..\..\src\TvZ\PvZScene.h"/>
+        <ClInclude Include="..\..\..\src\TvZ\StateBase.h"/>
+        <ClInclude Include="..\..\..\src\TvZ\StateMachine.h"/>
+        <ClInclude Include="..\..\..\src\TvZ\Zombie.h"/>
     </ItemGroup>
     <ItemGroup/>
     <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>

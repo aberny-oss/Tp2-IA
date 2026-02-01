@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-class Zombie : public Entity
+class Zombie : public Entity 
 {
 	float m_currentHealth;
 
