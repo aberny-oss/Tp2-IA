@@ -2,7 +2,6 @@
 #include "Debug.h"
 #include "PvZScene.h"
 #include "Projectile.h"
-#include "Zombie.h"
 
 #include <string>
 
@@ -10,19 +9,6 @@ void Plant::Shoot()
 {
 	if (m_bullet <= 0)
 		return;
-	if (m_powerShoot == true)
-	{
-		
-		float projectileRadius = GetRadius() * 0.3f;
-		sf::Vector2f projectilePos = GetPosition();
-
-		Projectile* p = CreateEntity<Projectile>(projectileRadius, sf::Color::Magenta);
-		p->SetPosition(projectilePos.x, projectilePos.y);
-
-		--m_bullet;
-		m_powerShoot = false;
-		return;
-	}
 
 	float projectileRadius = GetRadius() * 0.1f;
 	sf::Vector2f projectilePos = GetPosition();
@@ -30,7 +16,7 @@ void Plant::Shoot()
 	Projectile* p = CreateEntity<Projectile>(projectileRadius, sf::Color::Cyan);
 	p->SetPosition(projectilePos.x, projectilePos.y);
 
-	--m_bullet;
+	m_bullet--;
 }
 
 void Plant::Reload()
@@ -41,15 +27,39 @@ void Plant::Reload()
 void Plant::OnInitialize()
 {
 	m_bullet = m_capacity = 6;
-	m_PStimer = 3.f;
-	m_powerShoot = false;
-	m_ZoneDZombie = false;
 
 	SetTag((int)PvZScene::Tag::Plant);
 
-	m_stateMachine.AddState(new IdlePLantState());
-	m_stateMachine.AddState(new ShootingPLantState());
-	m_stateMachine.AddState(new ReloadingPLantState());
+	//IDLE
+	{
+		m_stateMachine.AddState(new IdlePLantState());
+
+		//->Reloading
+		Transition<Plant>* t = m_stateMachine.AddTransition((int)State::Idle, (int)State::Reloading);
+		t->AddCondition(new NoAmmoCondition());
+
+		//->Shooting
+		Transition<Plant>* t = m_stateMachine.AddTransition((int)State::Idle, (int)State::Shooting);
+		t->AddCondition(new HasZombieOnLaneCondition());
+
+		//->Reloading
+		Transition<Plant>* t = m_stateMachine.AddTransition((int)State::Idle, (int)State::Reloading);
+		t->AddCondition(new NotFullAmmoCondition());
+	}
+
+	//SHOOTING
+	{
+		ShootingPLantState* shooting = new ShootingPLantState();
+		shooting->m_delay = 0.5f;
+		m_stateMachine.AddState(shooting);
+	}
+
+	//RELOADING
+	{
+		ReloadingPLantState* reloading = new ReloadingPLantState();
+		reloading->m_delay = 2.f;
+		m_stateMachine.AddState(reloading);
+	}
 }
 
 void Plant::OnUpdate()
@@ -61,10 +71,6 @@ void Plant::OnUpdate()
 	Debug::DrawText(pos.x, pos.y, text, 0.5f, 0.5f, sf::Color::Blue);
 	Debug::DrawText(pos.x, pos.y - 50, StateToStr(), 0.5f, 0.5f, sf::Color::Blue);
 
-	if (m_powerShoot == false)
-	{
-		m_PStimer -= GetDeltaTime();
-	}
 	m_stateMachine.Update(this, GetDeltaTime());
 }
 
@@ -89,6 +95,7 @@ void IdlePLantState::Start(Plant* type)
 
 void IdlePLantState::Update(Plant* type, float dt)
 {
+	/*
 	//Transition -> Reloading
 	if (type->m_bullet <= 0)
 	{
@@ -102,15 +109,9 @@ void IdlePLantState::Update(Plant* type, float dt)
 	int laneIndex = scene->GetLaneIndex(type->GetPosition().y);
 
 	bool isZombieOnLane = scene->IsZombieOnLane(laneIndex);
-	type->m_ZoneDZombie = scene->GetPosZombieOnLane(laneIndex, 666);
 
 	if (isZombieOnLane) 
 	{
-		if (type->m_PStimer <= 0 && type->m_ZoneDZombie == true)
-		{
-			type->m_powerShoot = true;
-			type->m_PStimer = 3.f;
-		}
 		type->m_stateMachine.TryTransitionTo(type, (int)Plant::State::Shooting);
 		return;
 	}
@@ -121,6 +122,7 @@ void IdlePLantState::Update(Plant* type, float dt)
 		type->m_stateMachine.TryTransitionTo(type, (int)Plant::State::Reloading);
 		return;
 	}
+	*/
 }
 
 void IdlePLantState::End(Plant* type)
@@ -130,7 +132,7 @@ void IdlePLantState::End(Plant* type)
 void ShootingPLantState::Start(Plant* type)
 {
 	type->Shoot();
-	m_timer = 0.5f;
+	m_timer = m_delay;
 }
 
 void ShootingPLantState::Update(Plant* type, float dt)
@@ -148,7 +150,7 @@ void ShootingPLantState::End(Plant* type)
 
 void ReloadingPLantState::Start(Plant* type)
 {
-	m_timer = 1.f;
+	m_timer = m_delay;
 }
 
 void ReloadingPLantState::Update(Plant* type, float dt)
@@ -164,3 +166,25 @@ void ReloadingPLantState::Update(Plant* type, float dt)
 void ReloadingPLantState::End(Plant* type)
 {
 }
+
+bool NoAmmoCondition::Test(Plant* plant)
+{
+	return plant->m_bullet <= 0;
+}
+
+bool HasZombieOnLaneCondition::Test(Plant* plant)
+{
+	PvZScene* scene = plant->GetScene<PvZScene>();
+
+	int laneIndex = scene->GetLaneIndex(plant->GetPosition().y);
+
+	bool isZombieOnLane = scene->IsZombieOnLane(laneIndex);
+
+	return isZombieOnLane;
+}
+
+bool NotFullAmmoCondition::Test(Plant* plant)
+{
+	return plant->m_bullet < plant->m_capacity;
+}
+

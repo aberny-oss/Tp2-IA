@@ -16,10 +16,6 @@ class Plant : public Entity
 	int m_bullet;
 	int m_capacity;
 
-	float m_PStimer;
-	bool m_powerShoot;
-	bool m_ZoneDZombie;
-
 	
 public:
 	void Shoot();
@@ -35,6 +31,10 @@ private:
 	friend class IdlePLantState;
 	friend class ShootingPLantState;
 	friend class ReloadingPLantState;
+
+	friend class NoAmmoCondition;
+	friend class HasZombieOnLaneCondition;
+	friend class NotFullAmmoCondition;
 };
 
 class IdlePLantState : public StateBase<Plant>
@@ -47,8 +47,10 @@ public:
 
 class ShootingPLantState : public StateBase<Plant>
 {
-private:
+public:
+	float m_delay;
 
+private:
 	float m_timer;
 
 public:
@@ -59,12 +61,39 @@ public:
 
 class ReloadingPLantState : public StateBase<Plant>
 {
+public:
+	float m_delay;
+
 private:
-	
 	float m_timer;
 
 public:
 	void Start(Plant* type) override;
 	void Update(Plant* type, float dt) override;
 	void End(Plant* type) override;
+};
+
+class NoAmmoCondition : public Condition<Plant> 
+{
+public:
+	bool Test(Plant* plant) override;
+};
+
+class HasZombieOnLaneCondition : public Condition<Plant>
+{
+public:
+	bool Test(Plant* plant) override;
+};
+
+class NotFullAmmoCondition : public Condition<Plant>
+{
+public:
+	bool Test(Plant* plant) override;
+};
+
+class DelayCondition : public Condition<Plant>
+{
+	float m_delay;
+public:
+	bool Test(Plant* plant) override;
 };

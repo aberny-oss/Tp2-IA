@@ -2,29 +2,23 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
     <ItemGroup>
         <Filter Include="header">
-            <UniqueIdentifier>{1E8C1E61-2329-43C8-8AC2-B7789422C299}</UniqueIdentifier>
+            <UniqueIdentifier>{96428C0E-7964-499D-B9D9-C0495656E982}</UniqueIdentifier>
             <Extensions>h;hpp</Extensions>
         </Filter>
         <Filter Include="resource">
-            <UniqueIdentifier>{A09709B5-FA12-4B58-9866-0BD1D3347507}</UniqueIdentifier>
+            <UniqueIdentifier>{F819D0DA-26D5-4A34-B43F-D045B8350F64}</UniqueIdentifier>
             <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
         </Filter>
         <Filter Include="source">
-            <UniqueIdentifier>{2C661AE1-E381-46C8-8CE9-E9C0796B2D53}</UniqueIdentifier>
+            <UniqueIdentifier>{047F5087-4834-43D3-AC29-FB807242DA52}</UniqueIdentifier>
             <Extensions>cpp;c</Extensions>
         </Filter>
     </ItemGroup>
     <ItemGroup>
-        <ClCompile Include="..\..\..\src\TvZ\Condition.cpp">
-            <Filter>source</Filter>
-        </ClCompile>
         <ClCompile Include="..\..\..\src\TvZ\main.cpp">
             <Filter>source</Filter>
         </ClCompile>
         <ClCompile Include="..\..\..\src\TvZ\Plant.cpp">
-            <Filter>source</Filter>
-        </ClCompile>
-        <ClCompile Include="..\..\..\src\TvZ\PlantCondition.cpp">
             <Filter>source</Filter>
         </ClCompile>
         <ClCompile Include="..\..\..\src\TvZ\Projectile.cpp">
@@ -33,52 +27,22 @@
         <ClCompile Include="..\..\..\src\TvZ\PvZScene.cpp">
             <Filter>source</Filter>
         </ClCompile>
-        <ClCompile Include="..\..\..\src\TvZ\StateBase.cpp">
-            <Filter>source</Filter>
-        </ClCompile>
-        <ClCompile Include="..\..\..\src\TvZ\StateMachine.cpp">
-            <Filter>source</Filter>
-        </ClCompile>
-        <ClCompile Include="..\..\..\src\TvZ\Transition.cpp">
-            <Filter>source</Filter>
-        </ClCompile>
         <ClCompile Include="..\..\..\src\TvZ\Zombie.cpp">
             <Filter>source</Filter>
         </ClCompile>
-        <ClCompile Include="..\..\..\src\TvZ\ZombieCondition.cpp">
-            <Filter>source</Filter>
-        </ClCompile>
-        <ClInclude Include="..\..\..\src\TvZ\Condition.h">
-            <Filter>header</Filter>
-        </ClInclude>
         <ClInclude Include="..\..\..\src\TvZ\Plant.h">
-            <Filter>header</Filter>
-        </ClInclude>
-        <ClInclude Include="..\..\..\src\TvZ\PlantCondition.h">
             <Filter>header</Filter>
         </ClInclude>
         <ClInclude Include="..\..\..\src\TvZ\Projectile.h">
             <Filter>header</Filter>
         </ClInclude>
-        <ClInclude Include="..\..\..\src\TvZ\ProjectileCondition.h">
-            <Filter>header</Filter>
-        </ClInclude>
         <ClInclude Include="..\..\..\src\TvZ\PvZScene.h">
-            <Filter>header</Filter>
-        </ClInclude>
-        <ClInclude Include="..\..\..\src\TvZ\StateBase.h">
             <Filter>header</Filter>
         </ClInclude>
         <ClInclude Include="..\..\..\src\TvZ\StateMachine.h">
             <Filter>header</Filter>
         </ClInclude>
-        <ClInclude Include="..\..\..\src\TvZ\Transition.h">
-            <Filter>header</Filter>
-        </ClInclude>
         <ClInclude Include="..\..\..\src\TvZ\Zombie.h">
-            <Filter>header</Filter>
-        </ClInclude>
-        <ClInclude Include="..\..\..\src\TvZ\ZombieCondition.h">
             <Filter>header</Filter>
         </ClInclude>
     </ItemGroup>
