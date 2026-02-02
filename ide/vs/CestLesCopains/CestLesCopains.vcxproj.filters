@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+    <ItemGroup>
+        <Filter Include="header">
+            <UniqueIdentifier>{F1ABCA61-570C-4496-A70F-7E8F407BB657}</UniqueIdentifier>
+            <Extensions>h;hpp</Extensions>
+        </Filter>
+        <Filter Include="resource">
+            <UniqueIdentifier>{67C8B98D-99DB-48B4-AF27-0855C3180C49}</UniqueIdentifier>
+            <Extensions>hlsl;jpg;jpeg;png;wav;mp3;ico;dds;rc;obj</Extensions>
+        </Filter>
+        <Filter Include="source">
+            <UniqueIdentifier>{C3E861DD-2588-422C-AC87-9B3A81CDC8E5}</UniqueIdentifier>
+            <Extensions>cpp;c</Extensions>
+        </Filter>
+    </ItemGroup>
+    <ItemGroup>
+        <ClCompile Include="..\..\..\src\CestLesCopains\main.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClCompile Include="..\..\..\src\CestLesCopains\pch.cpp">
+            <Filter>source</Filter>
+        </ClCompile>
+        <ClInclude Include="..\..\..\src\CestLesCopains\main.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\CestLesCopains\pch.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <ClInclude Include="..\..\..\src\CestLesCopains\resource.h">
+            <Filter>header</Filter>
+        </ClInclude>
+        <None Include="..\..\..\src\CestLesCopains\app.ico">
+            <Filter>resource</Filter>
+        </None>
+        <None Include="..\..\..\src\CestLesCopains\app.rc">
+            <Filter>resource</Filter>
+        </None>
+        <None Include="..\..\..\src\CestLesCopains\small.ico">
+            <Filter>resource</Filter>
+        </None>
+    </ItemGroup>
+</Project>
