@@ -34,17 +34,23 @@ void Plant::OnInitialize()
 	{
 		m_stateMachine.AddState(new IdlePLantState());
 
-		//->Reloading
-		Transition<Plant>* t = m_stateMachine.AddTransition((int)State::Idle, (int)State::Reloading);
-		t->AddCondition(new NoAmmoCondition());
+		{
+			//->Reloading
+			Transition<Plant>* t = m_stateMachine.AddTransition((int)State::Idle, (int)State::Reloading);
+			t->AddCondition(new NoAmmoCondition());
+		}
 
-		//->Shooting
-		Transition<Plant>* t = m_stateMachine.AddTransition((int)State::Idle, (int)State::Shooting);
-		t->AddCondition(new HasZombieOnLaneCondition());
+		{
+			//->Shooting
+			Transition<Plant>* t = m_stateMachine.AddTransition((int)State::Idle, (int)State::Shooting);
+			t->AddCondition(new HasZombieOnLaneCondition());
+		}
 
-		//->Reloading
-		Transition<Plant>* t = m_stateMachine.AddTransition((int)State::Idle, (int)State::Reloading);
-		t->AddCondition(new NotFullAmmoCondition());
+		{
+			//->Reloading
+			Transition<Plant>* t = m_stateMachine.AddTransition((int)State::Idle, (int)State::Reloading);
+			t->AddCondition(new NotFullAmmoCondition());
+		}
 	}
 
 	//SHOOTING
